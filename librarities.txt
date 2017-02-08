@@ -1,0 +1,6 @@
+jstl 1.2
+log4j 2.7
+junit 4.11
+javaMail 1.4.5
+mockito 1.9.5
+iCaptcha

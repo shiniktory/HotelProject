@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.schema:APP</OriginalElement>
+  <nodes>
+    <node x="244.0" y="168.0">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.USERS</node>
+    <node x="200.0" y="0.0">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.FEEDBACKS</node>
+    <node x="568.6033994334277" y="93.14447592067987">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ROLES</node>
+    <node x="607.9546742209632" y="369.0368271954675">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDERS</node>
+    <node x="247.0" y="450.0">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDER_STATES</node>
+    <node x="48.0" y="572.0">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.APARTMENT_CLASSES</node>
+    <node x="-84.96033994334283" y="244.71671388101987">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.REQUESTS</node>
+    <node x="307.53257790368275" y="653.070821529745">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.HOTEL</node>
+    <node x="342.3172804532578" y="865.5354107648725">f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.APARTMENT_STATES</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.HOTEL" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.APARTMENT_STATES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.FEEDBACKS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.USERS">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDERS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDER_STATES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.HOTEL" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.APARTMENT_CLASSES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDERS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.HOTEL">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDERS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.USERS">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.REQUESTS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.USERS">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.USERS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ROLES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.REQUESTS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.ORDER_STATES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.REQUESTS" target="f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.APARTMENT_CLASSES">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.459037711313394" x="379.7167138810198" y="479.971671388102" />
+  <SelectedNodes>
+    <node>f9b4bc86-ddb7-46cb-8265-b4be5ef63d3a.table:APP.APARTMENT_STATES</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

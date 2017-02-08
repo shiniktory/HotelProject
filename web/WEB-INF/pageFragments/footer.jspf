@@ -1,0 +1,20 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<div id="footer">
+    <c:if test="${sessionScope.user.userRole eq 'ADMIN'}">
+        <c:set var="homePage" scope="page" value="controller?command=adminOrders"/>
+    </c:if>
+    <c:if test="${sessionScope.user.userRole eq 'CLIENT'}">
+        <c:set var="homePage" scope="page" value="controller?command=clientOrders"/>
+    </c:if>
+    <c:if test="${empty sessionScope.user}">
+        <c:set var="homePage" scope="page" value="Authorization.jsp"/>
+    </c:if>
+    <a href="${homePage}"><fmt:message key="home_page"/></a> |
+
+    <c:if test="${sessionScope.user.userRole eq 'CLIENT'}">
+        <a href="LeaveFeedback.jsp"><fmt:message key="feedback.leave" /></a> |
+    </c:if>
+
+    <a href="controller?command=guestBook"><fmt:message key="gb.title"/></a>
+
+</div>

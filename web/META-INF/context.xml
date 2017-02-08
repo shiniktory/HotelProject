@@ -1,0 +1,15 @@
+<Context>
+    <Resource name="jdbc/ST4DB" auth="Container" type="javax.sql.DataSource"
+              username="admin"
+              password="pass"
+              driverClassName="org.apache.derby.jdbc.ClientDriver"
+              url="jdbc:derby://localhost:1527/ST4DB"
+              initialSize="10"
+              maxTotal="15"
+              maxActive="15"
+            />
+
+    <ResourceLink name="jdbc/ST4DB"
+                  global="jdbc/ST4DB"
+                  type="javax.sql.DataSource" />
+</Context>

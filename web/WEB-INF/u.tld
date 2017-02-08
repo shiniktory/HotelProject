@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+    <tlib-version>2.0</tlib-version>
+    <short-name>u</short-name>
+    <uri>http://nure.ua/SummaryTask4/user</uri>
+
+    <tag>
+        <name>permission</name>
+        <tag-class>ua.nure.kozina.SummaryTask4.web.tag.PermissionTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>role</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>captcha</name>
+        <tag-class>ua.nure.kozina.SummaryTask4.web.tag.CaptchaTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+
+    <tag-file>
+        <name>message</name>
+        <path>/WEB-INF/tags/message.tag</path>
+    </tag-file>
+    <tag-file>
+        <name>orders</name>
+        <path>/WEB-INF/tags/orders.tag</path>
+    </tag-file>
+
+    <function>
+        <name>info</name>
+        <function-class>ua.nure.kozina.SummaryTask4.web.tag.UserInfo</function-class>
+        <function-signature>java.lang.String userInfo(ua.nure.kozina.SummaryTask4.entity.User, java.lang.String))</function-signature>
+    </function>
+    </taglib>
