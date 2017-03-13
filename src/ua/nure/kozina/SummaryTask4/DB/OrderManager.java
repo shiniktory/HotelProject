@@ -35,6 +35,7 @@ public class OrderManager {
     private static final String ADD_ORDER = "INSERT INTO orders VALUES (DEFAULT,?,?,?,?,?,?,?)";
     private static final String UPDATE_ORDER = "UPDATE orders SET user_id=?, room_number=?, bill=?, order_state=?, arrival_date=?, leaving_date=? WHERE id=?";
     private static final String DELETE_ORDER = "DELETE FROM orders WHERE id=?";
+
     /**
      * Returns a connection with database.
      *

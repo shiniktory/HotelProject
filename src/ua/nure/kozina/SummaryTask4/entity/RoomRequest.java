@@ -105,14 +105,13 @@ public class RoomRequest implements Serializable {
 
     @Override
     public String toString() {
-        return "RoomRequest{" +
+        return "RoomRequest: " +
                 "id=" + id +
                 ", userId=" + userId +
                 ", placeCount=" + placeCount +
                 ", roomClass=" + roomClass +
                 ", arrivalDate=" + arrivalDate +
                 ", leavingDate=" + leavingDate +
-                ", state=" + state +
-                '}';
+                ", state=" + state;
     }
 }

@@ -61,9 +61,8 @@ public class ApartmentClass implements Serializable {
 
     @Override
     public String toString() {
-        return "ApartmentClass{" +
+        return "ApartmentClass: " +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+                ", name='" + name + '\'';
     }
 }

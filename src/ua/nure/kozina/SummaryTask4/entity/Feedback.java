@@ -98,11 +98,10 @@ public class Feedback implements Serializable {
 
     @Override
     public String toString() {
-        return "Feedback {" +
+        return "Feedback: " +
                 "id=" + id +
                 ", user=" + user +
                 ", dateCreated=" + dateCreated +
-                ", text='" + text + '\'' +
-                '}';
+                ", text='" + text + '\'';
     }
 }

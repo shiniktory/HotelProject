@@ -62,7 +62,7 @@ public class SorterUtil {
     private static final Comparator<Feedback> SORT_COMMENTS_BY_DATE_CREATED = new Comparator<Feedback>() {
         @Override
         public int compare(Feedback o1, Feedback o2) {
-            return (int) (o2.getDateCreated().getTime() - o1.getDateCreated().getTime());
+            return o2.getDateCreated().compareTo(o1.getDateCreated());
         }
     };
 
@@ -72,7 +72,7 @@ public class SorterUtil {
     private static final Comparator<Order> SORT_ORDERS_BY_DATE_CREATED = new Comparator<Order>() {
         @Override
         public int compare(Order o1, Order o2) {
-            return (int) (o2.getDateCreation().getTime() - o1.getDateCreation().getTime());
+            return o2.getDateCreation().compareTo(o1.getDateCreation());
         }
     };
 

@@ -29,10 +29,10 @@ public class ApartmentManager {
      */
     private static final String SELECT_ALL_APARTMENT_CLASSES = "SELECT * FROM apartment_classes";
     private static final String SELECT_APARTMENT_CLASS_BY_ID = "SELECT * FROM apartment_classes WHERE id=?";
-    private static final String SELECT_ALL_APARTMENTS = "SELECT * FROM hotel";
-    private static final String SELECT_APARTMENTS_BY_CLASS_ID = "SELECT * FROM hotel WHERE class_id=?";
-    private static final String SELECT_FREE_APARTMENTS_BY_CLASS_AND_PLACE_COUNT = "SELECT * FROM hotel WHERE class_id=? AND place_count=? AND state_id=0";
-    private static final String SELECT_APARTMENTS_BY_ROOM_NUMBER = "SELECT * FROM hotel WHERE number=?";
+    private static final String SELECT_ALL_APARTMENTS = "SELECT * FROM hotel h INNER JOIN apartment_classes ac ON h.class_id=ac.id";
+    private static final String SELECT_APARTMENTS_BY_CLASS_ID = "SELECT * FROM hotel h INNER JOIN apartment_classes ac ON h.class_id=ac.id WHERE class_id=?";
+    private static final String SELECT_FREE_APARTMENTS_BY_CLASS_AND_PLACE_COUNT = "SELECT * FROM hotel h INNER JOIN apartment_classes ac ON h.class_id=ac.id WHERE class_id=? AND place_count=? AND state_id=0";
+    private static final String SELECT_APARTMENTS_BY_ROOM_NUMBER = "SELECT * FROM hotel h INNER JOIN apartment_classes ac ON h.class_id=ac.id WHERE number=?";
     private static final String ADD_APARTMENT = "INSERT INTO hotel VALUES (?,?,?,?,?)";
     private static final String ADD_APARTMENT_CLASS = "INSERT INTO apartment_classes VALUES (DEFAULT, ?)";
     private static final String UPDATE_APARTMENT = "UPDATE hotel SET place_count=?, class_id=?, state_id=?, price=? WHERE number=?";
@@ -407,7 +407,7 @@ public class ApartmentManager {
         ap.setRoomNumber(rs.getInt(DBColumns.ROOM_NUMBER));
         ap.setPlaceCount(rs.getInt(DBColumns.PLACE_COUNT));
         ap.setState(ApartmentState.getStateById(rs.getInt(DBColumns.APARTMENT_STATE_ID)));
-        ap.setApartmentClass(getApartmentClassById(rs.getInt(DBColumns.APARTMENT_CLASS)));
+        ap.setApartmentClass(getApartmentClass(rs));
         ap.setPrice(rs.getDouble(DBColumns.PRICE));
         return ap;
     }

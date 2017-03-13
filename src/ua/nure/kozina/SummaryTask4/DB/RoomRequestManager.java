@@ -3,6 +3,7 @@ package ua.nure.kozina.SummaryTask4.DB;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import ua.nure.kozina.SummaryTask4.constants.DBColumns;
+import ua.nure.kozina.SummaryTask4.entity.ApartmentClass;
 import ua.nure.kozina.SummaryTask4.entity.RoomRequest;
 import ua.nure.kozina.SummaryTask4.exception.DBException;
 import ua.nure.kozina.SummaryTask4.constants.ErrorMessages;
@@ -26,9 +27,9 @@ public class RoomRequestManager {
     /**
      * SQL queries.
      */
-    private static final String SELECT_ALL_ACTIVE_REQUESTS = "SELECT * FROM requests WHERE request_state=0";
-    private static final String SELECT_ALL_ACTIVE_REQUESTS_BY_USER_ID = "SELECT * FROM requests WHERE request_state=0 AND user_id=?";
-    private static final String SELECT_REQUEST_BY_ID = "SELECT * FROM requests WHERE id=?";
+    private static final String SELECT_ALL_ACTIVE_REQUESTS = "SELECT r.*, ac.id class_id, ac.class FROM requests r INNER JOIN apartment_classes ac ON r.class_id=ac.id WHERE request_state=0";
+    private static final String SELECT_ALL_ACTIVE_REQUESTS_BY_USER_ID = "SELECT r.*, ac.id class_id, ac.class FROM requests r INNER JOIN apartment_classes ac ON r.class_id=ac.id WHERE request_state=0 AND user_id=?";
+    private static final String SELECT_REQUEST_BY_ID = "SELECT r.*, ac.id class_id, ac.class FROM requests r INNER JOIN apartment_classes ac ON r.class_id=ac.id WHERE r.id=?";
     private static final String ADD_REQUEST = "INSERT INTO requests VALUES (DEFAULT, ?,?,?,?,?,?)";
     private static final String UPDATE_REQUEST = "UPDATE requests SET request_state=? WHERE id=?";
     private static final String DELETE_REQUEST = "DELETE FROM requests WHERE id=?";
@@ -234,11 +235,17 @@ public class RoomRequestManager {
         roomRequest.setId(rs.getLong(DBColumns.ID));
         roomRequest.setPlaceCount(rs.getInt(DBColumns.PLACE_COUNT));
         roomRequest.setUserId(rs.getLong(DBColumns.USER_ID));
-        roomRequest.setRoomClass(new ApartmentManager().getApartmentClassById(
-                rs.getInt(DBColumns.APARTMENT_CLASS)));
+        roomRequest.setRoomClass(extractApartmentClass(rs));
         roomRequest.setState(OrderState.getStateById(rs.getInt(DBColumns.REQUEST_STATE_ID)));
         roomRequest.setArrivalDate(rs.getDate(DBColumns.ARRIVAL_DATE));
         roomRequest.setLeavingDate(rs.getDate(DBColumns.LEAVING_DATE));
         return roomRequest;
+    }
+
+    private ApartmentClass extractApartmentClass(ResultSet rs) throws SQLException {
+        ApartmentClass ac = new ApartmentClass();
+        ac.setId(rs.getInt(DBColumns.APARTMENT_CLASS));
+        ac.setName(rs.getString(DBColumns.APARTMENT_CLASS_NAME));
+        return ac;
     }
 }

@@ -31,11 +31,11 @@ public class UserManager {
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id=?";
     private static final String SELECT_USER_BY_LOGIN = "SELECT * FROM users WHERE login=?";
     private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE email=?";
+    private static final String SELECT_ALL_FEEDBACKS = "SELECT f.*, u.id user_id, u.* FROM feedbacks f INNER JOIN users u ON u.id = f.user_id";
+    private static final String SELECT_FEEDBACK_BY_USER_ID = "SELECT f.*, u.id user_id, u.* FROM feedbacks f INNER JOIN users u ON u.id = f.user_id WHERE f.user_id=?";
     private static final String SELECT_FORGOT_PASSWORD_QUERY = "SELECT * FROM forgot_password WHERE token=?";
     private static final String ADD_USER = "INSERT INTO users VALUES (DEFAULT,?,?,?,?,?,?)";
     private static final String UPDATE_USER = "UPDATE users SET password=?, first_name=?, last_name=?, email=? WHERE id=?";
-    private static final String SELECT_ALL_FEEDBACKS = "SELECT * FROM feedbacks";
-    private static final String SELECT_FEEDBACK_BY_USER_ID = "SELECT * FROM feedbacks WHERE user_id=?";
     private static final String LEAVE_FEEDBACK = "INSERT INTO feedbacks VALUES (DEFAULT, ?,?,? )";
     private static final String CREATE_FORGOT_PASSWORD_QUERY = "INSERT INTO forgot_password VALUES (DEFAULT, ?,?,?,?)";
     private static final String UPDATE_FORGOT_PASSWORD_QUERY = "UPDATE forgot_password SET reset=? WHERE id=?";
@@ -514,15 +514,13 @@ public class UserManager {
      */
     private User getUser(ResultSet rs) throws SQLException, DBException {
         User user = new User();
-        long userId = rs.getLong(DBColumns.ID);
-        user.setId(userId);
+        user.setId(rs.getLong(DBColumns.ID));
         user.setLogin(rs.getString(DBColumns.LOGIN));
         user.setPassword(rs.getString(DBColumns.PASSWORD));
         user.setUserRole(Role.getRoleById(rs.getInt(DBColumns.USER_ROLE_ID)));
         user.setFirstName(rs.getString(DBColumns.FIRST_NAME));
         user.setLastName(rs.getString(DBColumns.LAST_NAME));
         user.setEmail(rs.getString(DBColumns.EMAIL));
-        user.setOrders(new OrderManager().findAllActiveOrdersByUserId(userId));
         return user;
     }
 
@@ -537,10 +535,30 @@ public class UserManager {
     private Feedback getFeedback(ResultSet rs) throws SQLException, DBException {
         Feedback feedback = new Feedback();
         feedback.setId(rs.getLong(DBColumns.ID));
-        feedback.setUser(getUser(rs.getLong(DBColumns.USER_ID)));
+        feedback.setUser(getUserForFeedback(rs));
         feedback.setDateCreated(rs.getDate(DBColumns.FEEDBACK_DATE_CREATION));
         feedback.setText(rs.getString(DBColumns.FEEDBACK_TEXT));
         return feedback;
+    }
+
+    /**
+     * Extracts a user from the result set.
+     *
+     * @param rs the result set to extract user from
+     * @return a user from the result set
+     * @throws SQLException
+     * @throws DBException
+     */
+    private User getUserForFeedback(ResultSet rs) throws SQLException, DBException {
+        User user = new User();
+        user.setId(rs.getLong(DBColumns.USER_ID));
+        user.setLogin(rs.getString(DBColumns.LOGIN));
+        user.setPassword(rs.getString(DBColumns.PASSWORD));
+        user.setUserRole(Role.getRoleById(rs.getInt(DBColumns.USER_ROLE_ID)));
+        user.setFirstName(rs.getString(DBColumns.FIRST_NAME));
+        user.setLastName(rs.getString(DBColumns.LAST_NAME));
+        user.setEmail(rs.getString(DBColumns.EMAIL));
+        return user;
     }
 
     /**

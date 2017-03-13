@@ -118,12 +118,11 @@ public class Apartment implements Serializable {
 
     @Override
     public String toString() {
-        return "Apartment{" +
+        return "Apartment: " +
                 "roomNumber=" + roomNumber +
                 ", placeCount=" + placeCount +
                 ", apartmentClass=" + apartmentClass +
                 ", state=" + state +
-                ", price=" + price +
-                '}';
+                ", price=" + price;
     }
 }

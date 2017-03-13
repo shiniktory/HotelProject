@@ -175,7 +175,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Order: " +
                 "id=" + id +
                 ", userId=" + userId +
                 ", roomNumber=" + roomNumber +
@@ -183,7 +183,6 @@ public class Order implements Serializable {
                 ", bill=" + bill +
                 ", dateCreation=" + dateCreation +
                 ", arrivalDate=" + arrivalDate +
-                ", leavingDate=" + leavingDate +
-                '}';
+                ", leavingDate=" + leavingDate;
     }
 }

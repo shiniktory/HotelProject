@@ -119,7 +119,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User {" +
+        return "User: " +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
@@ -127,7 +127,6 @@ public class User implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", userRole=" + userRole +
-                ", orders=" + orders +
-                '}';
+                ", orders=" + orders;
     }
 }
